@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+		type="text/css" />
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style.css" type="text/css" />
+	<title>Go Memo</title>
+
+</head>
+
+<body>
+	<div class="row col-sm-12">
+		<canvas id="game" width="500" height="500"></canvas>
+        </div>
+	<script src="JS/script.js"></script>
+	<script>
+		const game = new Game({
+            canvasId:"game",
+            grid:8,
+        });
+        game.setName("Fabio");
+        game.setTheme(
+            "./images/humanmind/000-question.png",
+            [
+                "./images/humanmind/001-idea.png",
+                "./images/humanmind/002-brain.png",
+                "./images/humanmind/003-problem.png",
+                "./images/humanmind/004-gear.png",
+                "./images/humanmind/005-guess.png",
+                "./images/humanmind/006-love.png",
+                "./images/humanmind/007-colour.png",
+                "./images/humanmind/008-approved.png",
+                "./images/humanmind/009-happy.png",
+                "./images/humanmind/010-worries.png",
+                "./images/humanmind/011-energy.png",
+                "./images/humanmind/012-share.png",
+                "./images/humanmind/013-observe.png",
+                "./images/humanmind/014-deny.png",
+                "./images/humanmind/015-sad.png",
+                "./images/humanmind/016-growth.png",
+                "./images/humanmind/017-thinking.png",
+                "./images/humanmind/018-read.png",
+            ]
+        );
+	</script>
+</body>
+
+</html>

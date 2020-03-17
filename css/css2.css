@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css?family=Concert+One|Luckiest+Guy&display=swap');
+
+/*-------------------------------------Background-image*/
+body {
+  background-image: url("../css/sunset-brain.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+.title{
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 200%;
+    padding: 30px;
+}
+
+.memory-game{
+    background-color:rgba(58, 52, 52, 0.671);
+    font-family: 'Concert One', cursive;
+    color: #fcede1;
+    padding: 30px;
+}
+
+.button-start{
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 200%;
+    color:#fcede1;
+    background-color: #fc7c2e;
+}
+
+.name{
+    background-color: white;
+    border: black solid 1px;
+    height: 35px;
+    width: 400px;
+}
+
