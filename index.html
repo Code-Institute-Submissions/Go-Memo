@@ -5,36 +5,114 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-		type="text/css" />
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/style.css" type="text/css" />
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-  
-	<title>GoMemo</title>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" type="text/css" />
+	<link rel="stylesheet" href="css/style.css?v=2" type="text/css" />
+    <title>GoMemo</title>
 </head>
 
 <body>
-	<div class="row col-sm-12 title">
-		<h1>Go Memo</h1>
+<h1 class="title">Go Memo</h1>
+	<div class="container-game">
+        <div class="padding">
+            <div id="instructions">
+                    
+                    <div class="memory-game">
+                        <h2 class="d-block">Instructions</h2>
+                        <p class="d-block">Go Memo is a memory game to improve your level of concentration and memory, follow the instructions and check it out!</p>
+                        <p class="d-block">1-  Write your name.</p>
+                        <p class="d-block">2-  Try to find the human mind's matchies.</p>
+                        <p class="d-block">3-  It has 3 Levels, every level it will add more matches to be found</p>
+                        <p class="d-block">4-  The score will be based in perfect moves porcentage(0-100)</p>
+                        <p class="d-block">5-  Have Fun and Good Luck!</p>
+                        <input type="text" id="inputname" class="form-control form-control-lg mb-3" placeholder="Write your name...." />
+                        <button type="button" class="btn button-start d-block w-100" onclick="startGame()">
+                            Start!
+                        </button>
+                    </div>
+            </div>
+            <div id="gamecontainer" class="d-none">
+                <div class="d-flex align-items-center justify-content-between mb-3">
+                    <div id="player" class="ff">Player undefined</div>
+                    <div id="level" class="ff">Level undefined</div>
+                    <div id="movements" class="ff">Moves undefined</div>
+                </div>
+                <canvas id="game" width="500" height="500"></canvas>
+                <div id="gameover" class="d-none">
+                    <h1 id="score">Score undefined</h1>
+                    <button type="button" class="btn button-start d-block w-100" onclick="restartGame()">
+                        Restart Game
+                    </button>
+                </div>
+            </div>
+        </div>
 	</div>
-	<div class="row col-sm-6 memory-game">
-		<h2 class="col-sm-12">Instructions</h2>
-        <p class="col-sm-12">Go Memo is a memory game to improve your level of concentration and memory, follow the instructions and check it out!</p>
+    <script src="JS/script.js?v=2"></script>
+	<script>
 
-		<p class="col-sm-12">1-  Write your name.</p>
-		<p class="col-sm-12">2-  Try to find the human mind's matchies.</p>
-        <p class="col-sm-12">3-  Each level it will add more matches to be found</p>
-		<p class="col-sm-12">4-  See how far you can go!</p>
-        <p class="col-sm-12">5-  Have Fun and Good Luck!</p>
+        const game = new Game({
+            canvasId:"game"
+        });
+        game.setTheme(
+            "./images/humanmind/000-question.png",
+            [
+                "./images/humanmind/001-idea.png",
+                "./images/humanmind/002-brain.png",
+                "./images/humanmind/003-problem.png",
+                "./images/humanmind/004-gear.png",
+                "./images/humanmind/005-guess.png",
+                "./images/humanmind/006-love.png",
+                "./images/humanmind/007-colour.png",
+                "./images/humanmind/008-approved.png",
+                "./images/humanmind/009-happy.png",
+                "./images/humanmind/010-worries.png",
+                "./images/humanmind/011-energy.png",
+                "./images/humanmind/012-share.png",
+                "./images/humanmind/013-observe.png",
+                "./images/humanmind/014-deny.png",
+                "./images/humanmind/015-sad.png",
+                "./images/humanmind/016-growth.png",
+                "./images/humanmind/017-thinking.png",
+                "./images/humanmind/018-read.png",
+                
+            ]
+        );
+        game.onChangename(function(newname){
+            var nameElement = document.getElementById('player')
+            nameElement.innerHTML = newname;
+        })
+        game.onChangelevel(function(newlevel){
+            var levelElement = document.getElementById('level')
+            levelElement.innerHTML = "Level " + newlevel;
+        })
+        game.onChangemovements(function(newmovement){
+            var movementsElement = document.getElementById('movements')
+            movementsElement.innerHTML = "Moves " + newmovement;
+        })
+        game.onGameover(function(score){
+            var gameElement = document.getElementById('game')
+            var gameoverElement = document.getElementById('gameover')
+            var scoreElement = document.getElementById('score')
+            gameElement.className = "d-none"
+            gameoverElement.className = "memory-game d-block"
+            scoreElement.innerHTML = "Score " + score;
+        })
 
-
-        <a class="col-sm-12"href="index2.html"><button type="button" class="btn button-start col-sm-12">Start!</button></a>
-
-	</div>
-
+        function restartGame(){
+            var gameElement = document.getElementById('game')
+            var gameoverElement = document.getElementById('gameover')
+            gameElement.className = "d-block"
+            gameoverElement.className = "d-none"            
+            game.restart();    
+        }
+        
+        function startGame(){
+            var instructions = document.getElementById('instructions')
+            var gamecontainer = document.getElementById('gamecontainer')
+            var inputname = document.getElementById('inputname')
+            instructions.className = "d-none"
+            gamecontainer.className = "d-block"
+            game.setName(inputname.value);
+        }		
+	</script>
 </body>
-
 </html>
