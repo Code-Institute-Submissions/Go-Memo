@@ -51,8 +51,6 @@ This site was manually tested to ensure compatibility and responsiveness.
 
 Also:
 
-All the links to external websites are working perfectly
-
 When the user goes to the next level it does not crash the page
 
 You can not click twice in the same card (you can not cheat)
@@ -66,9 +64,9 @@ The live site is deployed on GitHub pages. It uses the master branch. It updates
 
 Content: 
 
-The Text content from the index.html(page1) and the first paragraph of our-team.html(page2) was copied from:
+The Shuffle code on script.js (line 288 to 297) was copied from:
 
-[Wheel](https://www.wheel.ie/policy-and-research/about-our-sector)
+[Stackoverflow](https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array)
 
 
 
@@ -81,7 +79,8 @@ The Text from the text section on Our-team.html (page 2) was copied from "About 
 Media:
 
 [PixaBay](https://pixabay.com/illustrations/sunset-island-mar-dusk-brain-485016/)
+[FlatIcon](https://www.flaticon.com/packs/human-mind-54)
 
 
 Acknowledgements
-I received inspiration for this project from the charities in ireland which make a big difference in many lifes, trying to achieve a better social situation.
+I received inspiration for this project from the my mentor who gave me the challenge to show my skills in JS. The design comes from the idea of improviment when we exercise our brains. 

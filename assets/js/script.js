@@ -20,10 +20,10 @@
             score: 0,
             movements: 0,
             gameover: false,
-            onChangename: () => {},
-            onChanelevel: () => {},
-            onChangemovements: () => {},
-            onGameover: () => {},
+            onChangeName: () => {},
+            onChaneLevel: () => {},
+            onChangeMovements: () => {},
+            onGameOver: () => {},
         }
         var defaults = {
             canvasId: undefined,
@@ -52,26 +52,26 @@
     //public functions
     Game.prototype.setName = function(name){
         this.options.name = name;
-        this.options.onChangename(this.options.name)
+        this.options.onChangeName(this.options.name)
         console.log(this.options)
     }
 
-    Game.prototype.onChangename = function(callback){
-        this.options.onChangename = callback;
+    Game.prototype.onChangeName = function(callback){
+        this.options.onChangeName = callback;
     }
 
-    Game.prototype.onGameover = function(callback){
+    Game.prototype.onGameOver = function(callback){
         this.options.onGameover = callback;
     }
 
-    Game.prototype.onChangemovements = function(callback){
-        this.options.onChangemovements = callback;
-        this.options.onChangemovements(this.options.movements)
+    Game.prototype.onChangeMovements = function(callback){
+        this.options.onChangeMovements = callback;
+        this.options.onChangeMovements(this.options.movements)
     }
 
-    Game.prototype.onChangelevel = function(callback){
-        this.options.onChangelevel = callback;
-        this.options.onChangelevel(this.options.level)
+    Game.prototype.onChangeLevel = function(callback){
+        this.options.onChangeLevel = callback;
+        this.options.onChangeLevel(this.options.level)
     }
 
     Game.prototype.setTheme = function(hiddenSrc, imagesSrc){
@@ -99,8 +99,8 @@
         this.options.gameover = false;
         reset.call(this)
         render.call(this)
-        this.options.onChangemovements(this.options.movements)
-        this.options.onChangelevel(this.options.level)
+        this.options.onChangeMovements(this.options.movements)
+        this.options.onChangeLevel(this.options.level)
     }
 
     function start(totalAssets){
@@ -170,7 +170,7 @@
                                 if(Object.keys(this.options.selectedTiles).length == 2){
                                     this.options.block = true;
                                     this.options.movements += 1;
-                                    this.options.onChangemovements(this.options.movements)
+                                    this.options.onChangeMovements(this.options.movements)
                                     const values = Object.values(this.options.selectedTiles);
                                     if(values[0].value==values[1].value){
                                         for (let [key, value] of Object.entries(this.options.selectedTiles)) {
@@ -264,7 +264,7 @@
         this.options.gameover = true;
         this.options.score = Math.floor(minMoves / this.options.movements * 100);
         render.call(this)
-        this.options.onGameover(this.options.score)
+        this.options.onGameOver(this.options.score)
     }
 
     function endgame(){
@@ -274,7 +274,7 @@
             }else{
                 this.options.level+=1;
                 this.options.levelGrid+=2;
-                this.options.onChangelevel(this.options.level)
+                this.options.onChangeLevel(this.options.level)
                 reset.call(this)
                 render.call(this)
             }                        
