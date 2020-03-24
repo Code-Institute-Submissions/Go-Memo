@@ -20,59 +20,65 @@
             score: 0,
             movements: 0,
             gameover: false,
+            givup: false,
             onChangeName: () => {},
             onChaneLevel: () => {},
             onChangeMovements: () => {},
             onGameOver: () => {},
-        }
+        };
         var defaults = {
             canvasId: undefined,
             tilePadding: 10,
             timeoutCleaner: 1000,
             level: 1,
             maxSizeCanvas: 500,
-        }
+        };
         if(arguments[0] && typeof arguments[0] === "object"){
             this.options = extendDefaults(defaults, arguments[0]);
             this.options = extendDefaults(this.options, unprops);
         }
         //inicializer canvas
-        this.options.canvas = document.getElementById(this.options.canvasId)
-        this.options.ctx = this.options.canvas.getContext('2d')
+        this.options.canvas = document.getElementById(this.options.canvasId);
+        this.options.ctx = this.options.canvas.getContext('2d');
 
         window.addEventListener("resize", () => resize.call(this));
-        resize.call(this)
+        resize.call(this);
 
         //init
-        reset.call(this)
+        reset.call(this);
         //events
-        events.call(this)
-    }
+        events.call(this);
+    };
 
     //public functions
+    Game.prototype.givUp = function(){
+        this.options.givup = true;
+        gameover.call(this)
+    }
+
     Game.prototype.setName = function(name){
         this.options.name = name;
-        this.options.onChangeName(this.options.name)
-        console.log(this.options)
-    }
+        this.options.onChangeName(this.options.name);
+        console.log(this.options);
+    };
 
     Game.prototype.onChangeName = function(callback){
         this.options.onChangeName = callback;
-    }
+    };
 
     Game.prototype.onGameOver = function(callback){
-        this.options.onGameover = callback;
-    }
+        this.options.onGameOver = callback;
+    };
 
     Game.prototype.onChangeMovements = function(callback){
         this.options.onChangeMovements = callback;
-        this.options.onChangeMovements(this.options.movements)
-    }
+        this.options.onChangeMovements(this.options.movements);
+    };
 
     Game.prototype.onChangeLevel = function(callback){
         this.options.onChangeLevel = callback;
-        this.options.onChangeLevel(this.options.level)
-    }
+        this.options.onChangeLevel(this.options.level);
+    };
 
     Game.prototype.setTheme = function(hiddenSrc, imagesSrc){
         const totalAssets = imagesSrc.length + 1;
@@ -82,31 +88,32 @@
             var assetImage = new Image();
             assetImage.src = value;
             assetImage.onload = (e) => {
-                this.options.images.push(e.path[0])
-                start.call(this, totalAssets)
-            }
-        })
+                this.options.images.push(e.path[0]);
+                start.call(this, totalAssets);
+            };
+        });
         assetHidden.onload = (e) => {
-            this.options.hidden = e.path[0]
-            start.call(this, totalAssets)
-        }
-    }
+            this.options.hidden = e.path[0];
+            start.call(this, totalAssets);
+        };
+    };
 
     Game.prototype.restart = function(){
+        this.options.givup = false;
         this.options.level = 1;
         this.options.levelGrid = 2;
         this.options.movements = 0;
         this.options.gameover = false;
-        reset.call(this)
-        render.call(this)
-        this.options.onChangeMovements(this.options.movements)
-        this.options.onChangeLevel(this.options.level)
-    }
+        reset.call(this);
+        render.call(this);
+        this.options.onChangeMovements(this.options.movements);
+        this.options.onChangeLevel(this.options.level);
+    };
 
     function start(totalAssets){
         if(totalAssets == this.options.images.length + 1){
-            reset.call(this)
-            render.call(this)
+            reset.call(this);
+            render.call(this);
         }
     }
 
@@ -118,30 +125,30 @@
         maxsize -= margin*2;
         this.options.canvas.width = maxsize > this.options.maxSizeCanvas ? this.options.maxSizeCanvas : maxsize;
         this.options.canvas.height = maxsize > this.options.maxSizeCanvas ? this.options.maxSizeCanvas : maxsize;
-        this.options.wTile = this.options.canvas.width / this.options.grid
-        this.options.hTile = this.options.canvas.height / this.options.grid
-        render.call(this)
+        this.options.wTile = this.options.canvas.width / this.options.grid;
+        this.options.hTile = this.options.canvas.height / this.options.grid;
+        render.call(this);
     }
 
     function reset(){
-        const sqrt = Math.floor(Math.sqrt(this.options.images.length * 2))
+        const sqrt = Math.floor(Math.sqrt(this.options.images.length * 2));
         const maxGrid = sqrt % 2 == 0 ? sqrt : sqrt - 1;
         this.options.gameover = false;
         this.options.maxGrid = maxGrid;
-        this.options.grid = this.options.levelGrid > maxGrid ? maxGrid : this.options.levelGrid
+        this.options.grid = this.options.levelGrid > maxGrid ? maxGrid : this.options.levelGrid;
         this.options.block = false;
         this.options.ready = true;
         this.options.selectedMatches = {};
         this.options.selectedTiles = {};
         this.options.vector = [];
-        this.options.wTile = this.options.canvas.width / this.options.grid
-        this.options.hTile = this.options.canvas.height / this.options.grid
-        this.options.matches = (this.options.grid * this.options.grid)/2
+        this.options.wTile = this.options.canvas.width / this.options.grid;
+        this.options.hTile = this.options.canvas.height / this.options.grid;
+        this.options.matches = (this.options.grid * this.options.grid)/2;
         for(let i = 0; i < this.options.matches; i++){
             this.options.vector.push({img: this.options.images[i],value: i+1});
             this.options.vector.push({img: this.options.images[i],value: i+1});
         }
-        this.options.vector = shuffle.call(this, this.options.vector)
+        this.options.vector = shuffle.call(this, this.options.vector);
     }
 
     function events(){
@@ -163,19 +170,19 @@
                                 this.options.selectedTiles.hasOwnProperty(x+"-"+y)||
                                 this.options.selectedMatches.hasOwnProperty(x+"-"+y)
                             ){
-                                console.log("already added")
+                                console.log("already added");
                             }else{
-                                const value = this.options.vector[getVectorPosition.call(this, x, y)]
-                                this.options.selectedTiles[x+"-"+y] = value
+                                const value = this.options.vector[getVectorPosition.call(this, x, y)];
+                                this.options.selectedTiles[x+"-"+y] = value;
                                 if(Object.keys(this.options.selectedTiles).length == 2){
                                     this.options.block = true;
                                     this.options.movements += 1;
-                                    this.options.onChangeMovements(this.options.movements)
+                                    this.options.onChangeMovements(this.options.movements);
                                     const values = Object.values(this.options.selectedTiles);
                                     if(values[0].value==values[1].value){
                                         for (let [key, value] of Object.entries(this.options.selectedTiles)) {
                                             this.options.selectedMatches[key] = value;
-                                            endgame.call(this)
+                                            endgame.call(this);
                                         }
                                     }
                                     setTimeout(() => {
@@ -189,7 +196,7 @@
                         }
                     }
                 }
-                render.call(this)
+                render.call(this);
             }
         }); 
     }
@@ -199,9 +206,9 @@
     }
 
     function render(){
-        erase.call(this)
+        erase.call(this);
         if(this.options.gameover){
-            this.options.ctx.fillStyle = "#000000"
+            this.options.ctx.fillStyle = "#000000";
             this.options.ctx.font = "62px Arial";
             var text = "Game Over";
             var metrics = this.options.ctx.measureText(text);
@@ -212,9 +219,9 @@
                 this.options.canvas.height / 2
             );
         }else{
-            this.options.ctx.strokeStyle = "black"
-            this.options.ctx.fillStyle = "#9575cd"
-            this.options.ctx.lineWidth = 1
+            this.options.ctx.strokeStyle = "black";
+            this.options.ctx.fillStyle = "#9575cd";
+            this.options.ctx.lineWidth = 1;
             for(let x = 0; x < this.options.grid; x++){
                 for(let y = 0; y < this.options.grid; y++){
                     this.options.ctx.beginPath();
@@ -224,8 +231,8 @@
                     this.options.ctx.lineTo(x*this.options.wTile, y*this.options.hTile+this.options.hTile);
                     this.options.ctx.lineTo(x*this.options.wTile, y*this.options.hTile);
                     this.options.ctx.closePath();
-                    this.options.ctx.fill()
-                    this.options.ctx.stroke()                                     
+                    this.options.ctx.fill();
+                    this.options.ctx.stroke();                                     
                 }
             }            
             for(let x = 0; x < this.options.grid; x++){
@@ -234,7 +241,7 @@
                         this.options.selectedTiles.hasOwnProperty(x+"-"+y)||
                         this.options.selectedMatches.hasOwnProperty(x+"-"+y)
                     ){
-                        let value = this.options.vector[getVectorPosition.call(this,x,y)]                    
+                        let value = this.options.vector[getVectorPosition.call(this,x,y)];                    
                         this.options.ctx.drawImage(
                             value.img, 
                             x*this.options.wTile + this.options.tilePadding,
@@ -257,14 +264,18 @@
     }
 
     function gameover(){
-        var minMoves = 0;
-        for(var i = 2; i <= this.options.maxGrid; i+=2){
-            minMoves += (i*i)/2
+        if(this.options.givup){
+            this.options.score = "You gived up!"
+        }else{
+            var minMoves = 0;
+            for(var i = 2; i <= this.options.maxGrid; i+=2){
+                minMoves += (i*i)/2;
+            }
+            this.options.score = Math.floor(minMoves / this.options.movements * 100);            
         }
         this.options.gameover = true;
-        this.options.score = Math.floor(minMoves / this.options.movements * 100);
-        render.call(this)
-        this.options.onGameOver(this.options.score)
+        render.call(this);
+        this.options.onGameOver(this.options.score);
     }
 
     function endgame(){
@@ -274,9 +285,9 @@
             }else{
                 this.options.level+=1;
                 this.options.levelGrid+=2;
-                this.options.onChangeLevel(this.options.level)
-                reset.call(this)
-                render.call(this)
+                this.options.onChangeLevel(this.options.level);
+                reset.call(this);
+                render.call(this);
             }                        
         }
     }

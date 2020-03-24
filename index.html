@@ -31,17 +31,25 @@
                         </button>
                     </div>
             </div>
-            <div id="gamecontainer" class="d-none">
+            <div id="gameContainer" class="d-none">
                 <div class="d-flex align-items-center justify-content-between mb-3">
-                    <div id="player" class="ff">Player undefined</div>
-                    <div id="level" class="ff">Level undefined</div>
-                    <div id="movements" class="ff">Moves undefined</div>
+                    <div id="player" class="ff"></div>
+                    <div id="level" class="ff"></div>
+                    <div id="movements" class="ff"></div>
                 </div>
                 <canvas id="game" width="500" height="500"></canvas>
                 <div id="gameover" class="d-none">
-                    <h1 id="score">Score undefined</h1>
+                    <h1 id="score"></h1>
                     <button type="button" class="btn button-start d-block w-100" onclick="restartGame()">
                         Restart Game
+                    </button>
+                </div>
+                <div id="gameoptions" class="d-none">
+                    <button type="button" class="btn button-start" onclick="returnToMenu()" id="btn-return">
+                        Return do menu
+                    </button>
+                    <button type="button" class="btn button-start" onclick="givUp()" id="btn-givup">
+                        Give up
                     </button>
                 </div>
             </div>

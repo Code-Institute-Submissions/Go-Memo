@@ -10,7 +10,7 @@
 
 - The colours and and illustrations  were chosen with the purpose of bringing a light atmosfear, but also to show that they have to use their brains to get further each time they play
 
-- To developer the first sketch of this project was used the wireframe [mockflow.com](https://balsamiq.cloud/suhbz5n/pour9lw) where it still hosted .
+- To developer the first sketch of this project was used the wireframe [mockflow.com]() where it still hosted .
 ---------------------------------------------------------------------------------------
 ## Features:  
 Fun and Challenge
@@ -68,11 +68,17 @@ The Shuffle code on script.js (line 288 to 297) was copied from:
 
 [Stackoverflow](https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array)
 
+The following tutorials helped the project code construction:
 
+[YouTube Tutorial](https://www.youtube.com/watch?v=c_ohDPWmsM0)
+[YouTube Tutorial](https://www.youtube.com/watch?v=WWP7P7r-3rM)
+[YouTube Tutorial](https://www.youtube.com/watch?v=Rk4J-d7sPKQ)
+[YouTube Tutorial](https://www.youtube.com/watch?v=U0I6Z06N0kM)
+[Marina Ferreira Tutorial](https://marina-ferreira.github.io/tutorials/js/memory-game.pt-br/)
 
-The Text from the text section on Our-team.html (page 2) was copied from "About Us" respectively on:
+Private Classes and support in the maths resolution:
 
-[Irish Guide Dogs for the Blind](https://guidedogs.ie/)
+[Andre Ciornavai - Software Engineer](https://github.com/andreciornavei)
 
 
 

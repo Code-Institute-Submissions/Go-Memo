@@ -52,6 +52,16 @@ body {
     background-color:#d8d8d8;
 }
 
+
+#gameoptions{
+    display:flex;
+    margin-top: 10px;
+}
+
+#gameoptions > button{
+    flex-grow: 1;
+}
+
 .ff{
     font-family: 'Luckiest Guy', cursive;
 }
