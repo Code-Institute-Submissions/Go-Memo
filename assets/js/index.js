@@ -8,8 +8,20 @@
                 "./assets/images/humanmind/002-brain.png",
                 "./assets/images/humanmind/003-problem.png",
                 "./assets/images/humanmind/004-gear.png",
-               
-                
+                "./assets/images/humanmind/005-guess.png",
+                "./assets/images/humanmind/006-love.png",
+                "./assets/images/humanmind/007-colour.png",
+                "./assets/images/humanmind/008-approved.png",
+                "./assets/images/humanmind/009-happy.png",
+                "./assets/images/humanmind/010-worries.png",
+                "./assets/images/humanmind/011-energy.png",
+                "./assets/images/humanmind/012-share.png",
+                "./assets/images/humanmind/013-observe.png",
+                "./assets/images/humanmind/014-deny.png",
+                "./assets/images/humanmind/015-sad.png",
+                "./assets/images/humanmind/016-growth.png",
+                "./assets/images/humanmind/007-thinking.png",
+                "./assets/images/humanmind/008-read.png",
             ]
         );
         game.onChangeName(function(newname){
