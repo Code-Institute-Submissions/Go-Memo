@@ -1,4 +1,4 @@
-# MemoGo
+# GoMemo
  
 "MemoGo" is an opportunity for those who are willing to improve their memory, focused  in not just be a mental exercise but also a good moment of fun.
 

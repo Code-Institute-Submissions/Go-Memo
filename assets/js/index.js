@@ -1,6 +1,7 @@
         const game = new Game({
             canvasId:"game"
         });
+        // Game theme and game grid difined by quantity of images.
         game.setTheme(
             "./assets/images/humanmind/000-question.png",
             [
@@ -24,6 +25,7 @@
                 "./assets/images/humanmind/008-read.png",
             ]
         );
+        // player information / button functions
         game.onChangeName(function(newname){
             var nameElement = document.getElementById('player')
             nameElement.innerHTML = newname;
