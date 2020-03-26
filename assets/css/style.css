@@ -6,7 +6,7 @@ body {
     flex-direction: column;
     align-items:center;
     justify-content:center; 
-    background-image: url("../css/sunset-brain.png");
+    background-image: url("../images/humanmind/sunset-brain.png");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;     
@@ -26,6 +26,13 @@ body {
     font-size: 200%;
     color:#fcede1;
     background-color: #fc7c2e;
+}
+.button-game{
+    font-family: 'Luckiest Guy', cursive;
+    font-size: 200%;
+    margin-top: 10px;
+    color:#fcede1;
+    background-color: #9874e0;
 }
 
 .name{

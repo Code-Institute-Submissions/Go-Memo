@@ -19,8 +19,8 @@
             levelGrid: 2,
             score: 0,
             movements: 0,
-            gameover: false,
-            givup: false,
+            gameOver: false,
+            giveup: false,
             onChangeName: () => {},
             onChaneLevel: () => {},
             onChangeMovements: () => {},
@@ -51,9 +51,9 @@
     };
 
     //public functions
-    Game.prototype.givUp = function(){
-        this.options.givup = true;
-        gameover.call(this)
+    Game.prototype.giveUp = function(){
+        this.options.giveup = true;
+        gameOver.call(this)
     }
 
     Game.prototype.setName = function(name){
@@ -99,11 +99,11 @@
     };
 
     Game.prototype.restart = function(){
-        this.options.givup = false;
+        this.options.giveup = false;
         this.options.level = 1;
         this.options.levelGrid = 2;
         this.options.movements = 0;
-        this.options.gameover = false;
+        this.options.gameOver = false;
         reset.call(this);
         render.call(this);
         this.options.onChangeMovements(this.options.movements);
@@ -133,7 +133,7 @@
     function reset(){
         const sqrt = Math.floor(Math.sqrt(this.options.images.length * 2));
         const maxGrid = sqrt % 2 == 0 ? sqrt : sqrt - 1;
-        this.options.gameover = false;
+        this.options.gameOver = false;
         this.options.maxGrid = maxGrid;
         this.options.grid = this.options.levelGrid > maxGrid ? maxGrid : this.options.levelGrid;
         this.options.block = false;
@@ -207,7 +207,7 @@
 
     function render(){
         erase.call(this);
-        if(this.options.gameover){
+        if(this.options.gameOver){
             this.options.ctx.fillStyle = "#000000";
             this.options.ctx.font = "62px Arial";
             var text = "Game Over";
@@ -263,9 +263,9 @@
         }        
     }
 
-    function gameover(){
-        if(this.options.givup){
-            this.options.score = "You gived up!"
+    function gameOver(){
+        if(this.options.giveup){
+            this.options.score = "You gave up!"
         }else{
             var minMoves = 0;
             for(var i = 2; i <= this.options.maxGrid; i+=2){
@@ -273,7 +273,7 @@
             }
             this.options.score = Math.floor(minMoves / this.options.movements * 100);            
         }
-        this.options.gameover = true;
+        this.options.gameOver = true;
         render.call(this);
         this.options.onGameOver(this.options.score);
     }
@@ -281,7 +281,7 @@
     function endgame(){
         if(Object.keys(this.options.selectedMatches).length == this.options.matches*2){
             if(this.options.levelGrid == this.options.maxGrid){
-                gameover.call(this);
+                gameOver.call(this);
             }else{
                 this.options.level+=1;
                 this.options.levelGrid+=2;

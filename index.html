@@ -26,31 +26,31 @@
                         <p class="d-block">3-  It has 3 Levels, every level it will add more matches to be found</p>
                         <p class="d-block">4-  The score will be based in perfect moves porcentage(0-100)</p>
                         <p class="d-block">5-  Have Fun and Good Luck!</p>
-                        <input type="text" id="inputname" class="form-control form-control-lg mb-3" placeholder="Write your name...." />
+                        <input type="text" id="input-name" class="form-control form-control-lg mb-3" placeholder="Write your name...." />
                         <button type="button" class="btn button-start d-block w-100" onclick="startGame()">
                             Start!
                         </button>
                     </div>
             </div>
 <!--Memory game--------->
-            <div id="gameContainer" class="d-none">
+            <div id="game-Container" class="d-none">
                 <div class="d-flex align-items-center justify-content-between mb-3">
                     <div id="player" class="ff"></div>
                     <div id="level" class="ff"></div>
                     <div id="movements" class="ff"></div>
                 </div>
                 <canvas id="game" width="500" height="500"></canvas>
-                <div id="gameover" class="d-none">
+                <div id="game-over" class="d-none">
                     <h1 id="score"></h1>
                     <button type="button" class="btn button-start d-block w-100" onclick="restartGame()">
                         Restart Game
                     </button>
                 </div>
-                <div id="gameoptions" class="d-none">
-                    <button type="button" class="btn button-start" onclick="returnToMenu()" id="btn-return">
-                        Return do menu
+                <div id="game-options" class="d-none">
+                    <button type="button" class="btn button-game" onclick="returnToMenu()" id="btn-return">
+                        New Game
                     </button>
-                    <button type="button" class="btn button-start" onclick="givUp()" id="btn-givup">
+                    <button type="button" class="btn button-game" onclick="giveUp()" id="btn-giveup">
                         Give up
                     </button>
                 </div>

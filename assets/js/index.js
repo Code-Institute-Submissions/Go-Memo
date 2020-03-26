@@ -21,8 +21,8 @@
                 "./assets/images/humanmind/014-deny.png",
                 "./assets/images/humanmind/015-sad.png",
                 "./assets/images/humanmind/016-growth.png",
-                "./assets/images/humanmind/007-thinking.png",
-                "./assets/images/humanmind/008-read.png",
+                "./assets/images/humanmind/017-thinking.png",
+                "./assets/images/humanmind/018-read.png",
             ]
         );
         // player information / button functions
@@ -40,50 +40,50 @@
         });
         game.onGameOver(function(score){
             var gameElement = document.getElementById('game')
-            var gameoptionsElement = document.getElementById('gameoptions')
-            var gameoverElement = document.getElementById('gameover')
+            var gameoptionsElement = document.getElementById('game-options')
+            var gameOverElement = document.getElementById('game-over')
             var scoreElement = document.getElementById('score')
             gameElement.className = "d-none"
             gameoptionsElement.className = "d-block"
-            gameoverElement.className = "memory-game d-block"
+            gameOverElement.className = "memory-game d-block"
             scoreElement.innerHTML = "Score: " + score;
         });
 
         function restartGame(){
             var gameElement = document.getElementById('game')
-            var gameoptionsElement = document.getElementById('gameoptions')
-            var gameoverElement = document.getElementById('gameover')
+            var gameoptionsElement = document.getElementById('game-options')
+            var gameOverElement = document.getElementById('game-over')
             gameElement.className = "d-block"
             gameoptionsElement.className = "d-block"
-            gameoverElement.className = "d-none"            
+            gameOverElement.className = "d-none"            
             game.restart();    
         };
         
         function startGame(){
-            var gameoptionsElement = document.getElementById('gameoptions')
+            var gameoptionsElement = document.getElementById('game-options')
             var instructions = document.getElementById('instructions')
-            var gameContainer = document.getElementById('gameContainer')
-            var inputname = document.getElementById('inputname')
+            var gameContainer = document.getElementById('game-Container')
+            var inputname = document.getElementById('input-name')
             var gameElement = document.getElementById('game')
-            var gameoverElement = document.getElementById('gameover')
+            var gameOverElement = document.getElementById('game-over')
             gameElement.className = "d-block"
             gameoptionsElement.className = "d-block"
             instructions.className = "d-none"
             gameContainer.className = "d-block"
-            gameoverElement.className = "d-none"
+            gameOverElement.className = "d-none"
             game.setName(inputname.value);
             game.restart();
         };	
         
         function returnToMenu(){
-            var gameoptionsElement = document.getElementById('gameoptions')
+            var gameoptionsElement = document.getElementById('game-options')
             var instructions = document.getElementById('instructions')
-            var gameContainer = document.getElementById('gameContainer')
+            var gameContainer = document.getElementById('game-Container')
             gameoptionsElement.className = "d-none"
             instructions.className = "d-block"
             gameContainer.className = "d-none"
         };
 
-        function givUp(){
-            game.givUp();
+        function giveUp(){
+            game.giveUp();
         }
