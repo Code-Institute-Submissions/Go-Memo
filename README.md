@@ -76,7 +76,7 @@ The following steps were made to deploy:
 
 Content: 
 
-The Shuffle code on script.js (line 288 to 297) was copied from:
+The Shuffle code on script.js (line 299 to 308) was copied from:
 
 [Stackoverflow](https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array)
 
